@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from 'react'
 
-function App() {
+const App = () => {
+  useEffect(() => {
+    if (getOS() === ANDROID) {
+      window.location.href = "https://play.google.com/store/apps/details?id=com.aspiro.tidal"
+    } else if (getOS() === IOS) {
+      window.location.href = "https://apps.apple.com/us/app/tidal-music/id913943275"
+    } 
+  })
+
+  const IOS = 'iOS'
+  const ANDROID = 'Android'
+
+  let userAgent = window.navigator.userAgent,
+  platform = window.navigator.platform,
+  iosPlatforms = ['iPhone', 'iPad', 'iPod'],
+  os = null;
+
+  const getOS = () => {
+    if (iosPlatforms.indexOf(platform) !== -1) {
+      os = 'iOS';
+    } else if (/Android/.test(userAgent)) {
+      os = 'Android';
+    } 
+    return os;
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
     </div>
   );
 }
