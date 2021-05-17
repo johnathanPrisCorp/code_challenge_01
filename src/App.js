@@ -9,16 +9,23 @@ const App = () => {
     } 
   })
 
-  const IOS = 'iOS'
   const ANDROID = 'Android'
+  const IOS = 'iOS'
 
   let userAgent = window.navigator.userAgent,
-  platform = window.navigator.platform,
-  iosPlatforms = ['iPhone', 'iPad', 'iPod'],
   os = null;
 
   const getOS = () => {
-    if (iosPlatforms.indexOf(platform) !== -1) {
+    if ([
+      'iPad Simulator',
+      'iPhone Simulator',
+      'iPod Simulator',
+      'iPad',
+      'iPhone',
+      'iPod'
+    ].includes(navigator.platform)
+    // iPad on iOS 13 detection
+    || (navigator.userAgent.includes("Mac") && "ontouchend" in document)) {
       os = 'iOS';
     } else if (/Android/.test(userAgent)) {
       os = 'Android';
