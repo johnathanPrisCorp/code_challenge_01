@@ -3,9 +3,9 @@ import { useEffect } from 'react'
 const App = () => {
   useEffect(() => {
     if (getOS() === ANDROID) {
-      window.location.href = "https://play.google.com/store/apps/details?id=com.aspiro.tidal"
+      window.location = "https://play.google.com/store/apps/details?id=com.aspiro.tidal"
     } else if (getOS() === IOS) {
-      window.location.href = "https://apps.apple.com/us/app/tidal-music/id913943275"
+      window.location = "https://apps.apple.com/us/app/tidal-music/id913943275"
     } 
   })
 
